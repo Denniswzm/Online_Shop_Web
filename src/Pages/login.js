@@ -1,29 +1,80 @@
 import React from 'react';
-import './Main.scss';
-import { Row, Col, Carousel, Card } from 'antd';
+import './login.scss';
+import { Row, Col, Carousel, Card, Form, Input, Button, Checkbox } from 'antd';
 import QueueAnim from 'rc-queue-anim'
 
-class Main extends React.Component {
-    render(){
-        return(
-            <QueueAnim delay={1000} className = "queue-simple">
-            <div className= "showarea" key="main1">
-                <div className = 'maintext1'><p>Photo by Health Issues India</p></div>
-                    <div className = 'maintext2' key="main14">
-                        <p>The Situation is Rapidly Evolving and We are Closely Monitoring the Outbreak,</p>
-                        <p>Conducting Surveillance and Appropriate Laboratory Testing, </p>
-                        <p>and Providing Public Health and Infection Control Guidance.</p>
-                    </div>
+const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+  const tailLayout = {
+    wrapperCol: {
+      offset: 8,
+      span: 16,
+    },
+  };
+  
+  const Demo = () => {
+    const onFinish = values => {
+      console.log('Success:', values);
+    };
+  
+    const onFinishFailed = errorInfo => {
+      console.log('Failed:', errorInfo);
+    };
+  
+    return (
+      <Form
+        {...layout}
+        name="basic"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your username!',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+  
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your password!',
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+  
+        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+  
+        <Form.Item {...tailLayout}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    );
+  };
 
-                    
-
-            </div>
-            </QueueAnim>
-        )
-    }
-
-
-    
-}
-
-export default Main;
+  
+  export default Demo;
