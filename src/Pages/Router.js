@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter } from "react-
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Main from "./Main";
 import Map from "./Map";
-import News from "./News";
-import Advice from "./Advice";
+import SignUp from "./SignUp";
+import Login from "./Login";
 
 const MyRouter = withRouter(({location})=>(
     <div>
@@ -16,6 +16,7 @@ const MyRouter = withRouter(({location})=>(
           <Route path="/map" exact component={Map} />
           <Route path="/news" exact component={News} />
           <Route path="/advice" exact component={Advice} />
+          <Route path="/login" exact component={Login} />
         </Switch>
       </CSSTransition>
     </TransitionGroup>

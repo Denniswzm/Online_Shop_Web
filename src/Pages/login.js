@@ -1,5 +1,5 @@
 import React from 'react';
-import './login.scss';
+import './Login.scss';
 import { Row, Col, Carousel, Card, Form, Input, Button, Checkbox } from 'antd';
 import QueueAnim from 'rc-queue-anim'
 
