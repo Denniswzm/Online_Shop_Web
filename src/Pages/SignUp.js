@@ -1,4 +1,3 @@
-import React from 'react';
 import './SignUp.scss';
 import React, { useState } from 'react';
 import {Form, Input, Tooltip, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete} from 'antd';
@@ -194,7 +193,7 @@ const RegistrationForm = () => {
           { type: 'array', required: true, message: 'Please select your habitual residence!' },
         ]}
       >
-        <Cascader options={residences} />
+        <Cascader options={provinces} />
       </Form.Item>
 
       <Form.Item
@@ -233,4 +232,4 @@ const RegistrationForm = () => {
   );
 };
 
-  export default Demo;
+  export default RegistrationForm;
