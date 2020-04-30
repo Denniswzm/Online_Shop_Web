@@ -1,15 +1,56 @@
 .nvbar{
-    background:linear-gradient(#505050, #000000);
+    background:#0084ff;
+}
+
+.logo{
+    width: 8em;
+    height: 4em;
+    margin-left: 5em;
+
+}
+
+.search{
+    width: 30em;
+    height: 3em;
+    margin-top: 0.5em;
+    margin-left: 0em;
+    
+}
+
+.provinces{
+    margin-top: 0.5em;
+    height: 2.8em;
+    margin-left: 30em;
+    
+}
+
+.cart{
+    font-size: large;
+    font-weight: bold;
+}
+
+.button1{
+    width: 8em;
+    margin-left: 1.5em;
 }
 
 .text1{
     color: white !important;
     font-family: Garamond;
+    margin-top: 0.5em;
+}
+
+.department{
+    color: white !important;
+    font-size: large;
+    font-weight: bold;
+    margin-left: -30em;
 }
 
 .main{
     font-size: large;
     font-weight: bold;
+    margin-left: 4em;
 }
 
 .map{

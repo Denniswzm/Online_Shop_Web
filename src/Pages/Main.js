@@ -35,19 +35,19 @@ class Main extends React.Component {
             <div className="Collapse1">
                 <Carousel autoplay>
                     <div>
-                        <img className="img1" src={img1} />
+                        <img className="img" src={img1} />
                     </div>
                     <div>
-                        <img className="img2" src={img2} />
+                        <img className="img" src={img2} />
                     </div>
                     <div>
-                        <img className="img3" src={img3} />
+                        <img className="img" src={img3} />
                     </div>
                     <div>
-                        <img className="img4" src={img4} />
+                        <img className="img" src={img4} />
                     </div>
                     <div>
-                        <img className="img5" src={img5} />
+                        <img className="img" src={img5} />
                     </div>
                 </Carousel>
             </div>

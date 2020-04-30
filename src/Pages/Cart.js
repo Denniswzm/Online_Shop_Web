@@ -7,14 +7,8 @@ import QueueAnim from 'rc-queue-anim'
 class Cart extends React.Component {
     render(){
         return(
-            <QueueAnim delay={1000} className = "queue-simple">
-            
-            
-
-            
-
-            
-            </QueueAnim>
+            <div>
+            </div>
         )
     }
 }
