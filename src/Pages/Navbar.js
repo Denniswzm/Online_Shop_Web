@@ -9,32 +9,10 @@ const { SubMenu } = Menu;
 
 const { Search } = Input;
 
-function handleMenuClick(e) {
-    console.log('click', e);
-}
-
-const provinces = (
-    <Menu onClick={handleMenuClick}>
-        <Menu.Item key="1">AB</Menu.Item>
-        <Menu.Item key="2">BC</Menu.Item>
-        <Menu.Item key="3">MB</Menu.Item>
-        <Menu.Item key="3">NB</Menu.Item>
-        <Menu.Item key="3">NL</Menu.Item>
-        <Menu.Item key="3">NT</Menu.Item>
-        <Menu.Item key="3">NS</Menu.Item>
-        <Menu.Item key="3">NU</Menu.Item>
-        <Menu.Item key="3">ON</Menu.Item>
-        <Menu.Item key="3">PE</Menu.Item>
-        <Menu.Item key="3">SK</Menu.Item>
-        <Menu.Item key="3">YT</Menu.Item>
-    </Menu>
-    );
-
-
-
 class Navbar extends React.Component {
     state = {
-        current: "Main"
+        current: "main",
+        prov: "ON"
     };
 
     handleClick = e => {
@@ -44,6 +22,44 @@ class Navbar extends React.Component {
         });
     };
 
+    changeProv = e => {
+        this.setState({
+            prov: this.pv[e.key]
+        });
+    }
+
+    pv = {
+        "1": "AB",
+        "2": "BC",
+        "3": "MB",
+        "4": "NB",
+        "5": "NL",
+        "6": "NT",
+        "7": "NS",
+        "8": "NU",
+        "9": "ON",
+        "10": "PE",
+        "11": "SK",
+        "12": "YT",
+    }
+
+    provinces = (
+        <Menu onClick={this.changeProv}>
+            <Menu.Item key="1">AB</Menu.Item>
+            <Menu.Item key="2">BC</Menu.Item>
+            <Menu.Item key="3">MB</Menu.Item>
+            <Menu.Item key="4">NB</Menu.Item>
+            <Menu.Item key="5">NL</Menu.Item>
+            <Menu.Item key="6">NT</Menu.Item>
+            <Menu.Item key="7">NS</Menu.Item>
+            <Menu.Item key="8">NU</Menu.Item>
+            <Menu.Item key="9">ON</Menu.Item>
+            <Menu.Item key="10">PE</Menu.Item>
+            <Menu.Item key="11">SK</Menu.Item>
+            <Menu.Item key="12">YT</Menu.Item>
+        </Menu>
+    );
+
 render() {
     return (
         <div>
@@ -51,9 +67,9 @@ render() {
             <div>
                 <img className = "logo" src={logo} />
 
-                <Dropdown className = "provinces" overlay={provinces}>
+                <Dropdown className = "provinces" overlay={this.provinces}>
                     <Button>
-                        ON <DownOutlined />
+                        {this.state.prov} <DownOutlined />
                     </Button>
                 </Dropdown>
 
@@ -65,18 +81,18 @@ render() {
                     onSearch={value => console.log(value)}
                 />
 
-                <Button className = "button1" >Login</Button>
+                <Button className = "button1" href = "/Login">Login</Button>
 
-                <Button className = "button1" >Sign Up</Button>
+                <Button className = "button1" href = "/SignUp">Sign Up</Button>
 
                 <Button className = "cart" type="link" icon={<ShoppingCartOutlined/>} >Cart</Button>
 
             </div>
 
             <Menu className = 'nvbar' mode="horizontal" onClick={this.handleClick} selectedKeys={[this.state.current]} style={{ height : 60}}>
-                <SubMenu className = 'department' title="Department" icon={<AppstoreOutlined />}>
+                <SubMenu className='department' title="Department" key="main" icon={<AppstoreOutlined />}>
                     <Menu.ItemGroup title="Grocery & Household">
-                        <Menu.Item key="setting:1001">Meat & Seafood</Menu.Item>
+                        <Menu.Item key="setting:1001" icon={<AppstoreOutlined />}>Meat & Seafood</Menu.Item>
                         <Menu.Item key="setting:1002">Snack & Candy</Menu.Item>
                         <Menu.Item key="setting:1003">Vegan Food</Menu.Item>
                         <Menu.Item key="setting:1004">Water & Beverages</Menu.Item>
@@ -90,7 +106,7 @@ render() {
                 </SubMenu>
                 <Menu.Item key="Main" className = 'main'>
                     <Link className = 'text1' to="/">
-                        Main Page
+                        Home
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="Map" className = 'map' >

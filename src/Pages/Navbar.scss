@@ -21,6 +21,7 @@
     margin-top: 0.5em;
     height: 2.8em;
     margin-left: 30em;
+    width: 5em;
     
 }
 
@@ -41,10 +42,13 @@
 }
 
 .department{
+    background-color: rgb(32, 84, 255);
     color: white !important;
     font-size: large;
     font-weight: bold;
     margin-left: -30em;
+    width: 10.1em;
+    height: 3em;
 }
 
 .main{
@@ -69,4 +73,15 @@
     font-size: large;
     font-weight: bold;
     margin-left: 4em;
+}
+
+.ant-menu-horizontal > .ant-menu-item:hover, 
+.ant-menu-horizontal > .ant-menu-submenu:hover, 
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-item-open,
+.ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal > .ant-menu-submenu-selected {
+    border-bottom: 2px solid #FFFFFF;
 }
