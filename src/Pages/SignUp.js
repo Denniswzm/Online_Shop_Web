@@ -120,7 +120,7 @@ return (
 
             </TabPane>
 
-            <TabPane className ="Tabbox" tab="Signup" key="2">
+            <TabPane className ="Tabbox" tab="Sign Up" key="2">
                 
                 <Card className = "box">
                     
