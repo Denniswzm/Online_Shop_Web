@@ -4,19 +4,12 @@ import logo from "../img/Logo.png";
 import { Row, Col, Menu, Cascader, Input, Button, Dropdown } from "antd";
 import { MailOutlined, AppstoreOutlined, SettingOutlined, SearchOutlined, AudioOutlined, DownOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
-import store from "../store/user";
 
 const { SubMenu } = Menu;
 
 const { Search } = Input;
 
-export default class Nav extends React.Component {
-
-    signincheck = () => {
-        const action = UserAction();
-        store.dispath(action);
-    };
-
+class Navbar extends React.Component {
     state = {
         current: "main",
         prov: "ON"
@@ -140,11 +133,4 @@ render() {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        prop: state.prop
-    }
-}
-
-// export default Navbar = connect()(Nav)
-//export default Navbar;
+export default Navbar;
