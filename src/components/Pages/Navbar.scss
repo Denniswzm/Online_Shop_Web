@@ -90,3 +90,65 @@
 .ant-menu-horizontal > .ant-menu-submenu-selected {
     border-bottom: 2px solid #FFFFFF;
 }
+
+// cart
+
+.shopping-cart {
+    margin: 20px 0;
+    float: right;
+    background: white;
+    width: 320px;
+    position: relative;
+    border-radius: 3px;
+    padding: 20px;
+    
+    
+    .shopping-cart-header {
+      border-bottom: 1px solid #E8E8E8;
+      padding-bottom: 15px;
+      
+      .shopping-cart-total {
+        float: right;
+      }
+    }
+    
+    .shopping-cart-items {
+      
+      padding-top: 20px;
+  
+        li {
+          margin-bottom: 18px;
+        }
+  
+      img {
+        float: left;
+        margin-right: 12px;
+      }
+      
+      .item-name {
+        display: block;
+        padding-top: 10px;
+        font-size: 16px;
+      }
+      
+      .item-price {
+        margin-right: 8px;
+      }
+    
+    }
+     
+  }
+  
+  .shopping-cart:after {
+      bottom: 100%;
+      left: 89%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: white;
+      border-width: 8px;
+      margin-left: -8px;
+  }

@@ -1,10 +1,11 @@
 import React from "react";
 import './Navbar.scss'
 import logo from "../../img/Logo.png";
-import { Select, Menu, Cascader, Input, Button, Dropdown } from "antd";
+import { Select, Menu, Cascader, Input, Button, Dropdown,Card } from "antd";
 import { MailOutlined, AppstoreOutlined, SettingOutlined, SearchOutlined, AudioOutlined, DownOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import provinces from "../const/provinces";
+import axios from "axios"; 
 import { connect } from 'react-redux'
 
 const { SubMenu } = Menu;
@@ -13,26 +14,33 @@ const { Search } = Input;
 
 const { Option } = Select;
 
+
+
 function handleChange(value) {
 
     console.log(`selected ${value}`);
 
 }
 
+function CartMenuClick(e) {
+    console.log('click', e);
+  }
+  
+
 export class Navbar extends React.Component {
+
+    // componentWillMount() {
+    //     axios.get("http://localhost:8080/api/user").then(r => {
+    //         this.setState({
+    //             user: r.data
+    //         });
+    //     });
+    // }
 
     state = {
         current: "main",
         prov: "ON"
     };
-
-    // componentWillUpdate(prevProps,prevState){
-    //     this.setState({
-    //         current: prevState.current,
-    //         prov: prevState.prov,
-    //         isLogin: prevState.isLogin
-    //     })
-    // }
 
 
     handleClick = e => {
@@ -41,13 +49,6 @@ export class Navbar extends React.Component {
         current: e.key
         });
     };
-    
-
-    // changeProv = e => {
-    //     this.setState({
-    //         prov: this.pv[e.key]
-    //     });
-    // }
     
     changeProv = e => {
         // console.log(e)
@@ -94,7 +95,7 @@ render() {
                 }
                 
 
-                <Button className = "cart" type="link" icon={<ShoppingCartOutlined/>} href = "/Cart">Cart</Button>
+                <Button className = "cart" type="link" icon={<ShoppingCartOutlined/>} href = "/Cart">Cart <DownOutlined /></Button>
 
             </div>
 
@@ -134,6 +135,43 @@ render() {
                     </Link>
                 </Menu.Item>
             </Menu>
+        
+
+            <div className = "shopping-cart">
+                <Card>
+                    <div class="shopping-cart-header">
+                        <div class="shopping-cart-total">
+                            <span class="lighter-text">Total:</span>
+                            <span class="main-color-text">$2,229.97</span>
+                        </div>
+                    </div>
+
+                    <ul class="shopping-cart-items">
+                        <li class="clearfix">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+                            <span class="item-name">Sony DSC-RX100M III</span>
+                            <span class="item-price">$849.99</span>
+                            <span class="item-quantity">Quantity: 01</span>
+                        </li>
+
+                        <li class="clearfix">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
+                            <span class="item-name">KS Automatic Mechanic...</span>
+                            <span class="item-price">$1,249.99</span>
+                            <span class="item-quantity">Quantity: 01</span>
+                        </li>
+
+                        <li class="clearfix">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+                            <span class="item-name">Kindle, 6" Glare-Free To...</span>
+                            <span class="item-price">$129.99</span>
+                            <span class="item-quantity">Quantity: 01</span>
+                        </li>
+                    </ul>
+
+                </Card>
+            </div>
+
         </div>
     );
   }
