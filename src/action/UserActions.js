@@ -1,28 +1,49 @@
 import * as types from "./types";
 
-export const fetchUserBegin = () => ({
-    type: types.FETCH_USER.FETCH_USER_BEGIN,
-});
+export const loginUser = (username, password) => async (dispatch, getState) => {
+    const result = await dispatch({
+        type: types.FETCH_USER.FETCH_USER_BEGIN,
+        payload: fetch(
+            'http://localhost:8080/api/auth',
+            {
+                method: 'post',
+                mode: 'cors',
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,password
+                })
+            })
+    })
+    console.log("data: ")
+    console.log(result);
+    const data = await result.payload;
+    const resp = await data.text();
+    if (resp === 'success') {
+        dispatch({
+            type: types.FETCH_USER.FETCH_USER_SUCCESS,
+            payload: username
+        })
+    } else {
+        dispatch({
+            type: types.FETCH_USER.FETCH_USER_FAILURE,
+            payload: username
+        })
+    }
+};
   
 export const fetchUserSuccess = users => ({
     type: types.FETCH_USER.FETCH_USER_SUCCESS,
-    payload: { users }
+    payload: { users },
+    isLogin:true
 });
   
 export const fetchUserFailure = error => ({
     type: types.FETCH_USER.FETCH_USER_FAILURE,
-    payload: { error }
+    payload: { error },
+    isLogin:false
 });
 
-//USER STATE
-
-export const setUserStateTrue = () =>({
-	type: types.USER_LOGIN.STATE_TRUE,
-	payload: true,
-})
-
-export const setUserStateFalse = () =>({
-	type: types.USER_LOGIN.STATE_FALSE,
-	payload: false,
-})
 

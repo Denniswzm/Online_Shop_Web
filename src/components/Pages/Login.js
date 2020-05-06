@@ -2,6 +2,8 @@ import React from 'react';
 import './Login.scss';
 import { Row, Col, Carousel, Card, Form, Input, Button, Checkbox, Breadcrumb, Tabs } from 'antd';
 import QueueAnim from 'rc-queue-anim'
+import {connect} from 'react-redux';
+import {loginUser} from '../../action/UserActions';
 
 const { TabPane } = Tabs;
 
@@ -20,9 +22,10 @@ const tailLayout = {
 			},
 		};
 	
-const Demo = () => {
+const Demo = (props) => {
 		const onFinish = values => {
 			console.log('Success:', values);
+			props.loginUser(values.username, values.password)
 		};
 	
 		const onFinishFailed = errorInfo => {
@@ -58,7 +61,6 @@ return (
 									>
 										<Input />
 									</Form.Item>
-						
 									<Form.Item className = "password"
 											label="Password"
 											name="password"
@@ -95,13 +97,11 @@ return (
 
 				<TabPane tab="Sign Up" key="2">
 					
-				
-				
+
 				</TabPane>
 
 		</Tabs>
 		);
 	};
-
-	
-	export default Demo;
+	const mapDispatch = {loginUser};
+	export default connect(null, mapDispatch)(Demo);

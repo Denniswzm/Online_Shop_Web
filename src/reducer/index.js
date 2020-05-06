@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { reducer } from './userReducer'
+import { userReducer } from './userReducer'
 
 
 export const reducers = combineReducers({

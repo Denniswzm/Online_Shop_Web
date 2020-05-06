@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.scss';
 import { Button, Carousel, Card, Tag, InputNumber } from 'antd';
-import imgHolder from "../img/unknow.png";
+import imgHolder from "../../img/unknow.png";
 import QueueAnim from 'rc-queue-anim'
 
 function onChange(value) {

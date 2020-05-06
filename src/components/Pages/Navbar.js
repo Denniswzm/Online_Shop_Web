@@ -1,15 +1,18 @@
 import React from "react";
 import './Navbar.scss'
-import logo from "../img/Logo.png";
+import logo from "../../img/Logo.png";
 import { Row, Col, Menu, Cascader, Input, Button, Dropdown } from "antd";
 import { MailOutlined, AppstoreOutlined, SettingOutlined, SearchOutlined, AudioOutlined, DownOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
+import provinces from "../const/provinces";
+import { connect } from 'react-redux'
 
 const { SubMenu } = Menu;
 
 const { Search } = Input;
 
-class Navbar extends React.Component {
+export class Navbar extends React.Component {
+
     state = {
         current: "main",
         prov: "ON"
@@ -22,26 +25,30 @@ class Navbar extends React.Component {
         });
     };
 
+    // changeProv = e => {
+    //     this.setState({
+    //         prov: this.pv[e.key]
+    //     });
+    // }
+    
     changeProv = e => {
+        // console.log(e)
         this.setState({
-            prov: this.pv[e.key]
+            prov: provinces[e.key]
         });
     }
 
-    pv = {
-        "1": "AB",
-        "2": "BC",
-        "3": "MB",
-        "4": "NB",
-        "5": "NL",
-        "6": "NT",
-        "7": "NS",
-        "8": "NU",
-        "9": "ON",
-        "10": "PE",
-        "11": "SK",
-        "12": "YT",
-    }
+    prov = (
+        <Menu onClick={this.changeProv}>
+            { Object.keys(provinces).map((ele) => <Menu.Item key={ele}>{provinces[ele]}</Menu.Item>)}
+        </Menu>
+    )
+
+    // prov(){
+    //     let dom = provinces.map((ele,idx) => {
+    //         <Menu.Item key="idx">ele.val</Menu.Item>
+    //     })
+    // }
 
     provinces = (
         <Menu onClick={this.changeProv}>
@@ -60,6 +67,9 @@ class Navbar extends React.Component {
         </Menu>
     );
 
+//username & button change
+
+
 render() {
     return (
         <div>
@@ -67,7 +77,7 @@ render() {
             <div>
                 <img className = "logo" src={logo} />
 
-                <Dropdown className = "provinces" overlay={this.provinces}>
+                <Dropdown className = "provinces" overlay={this.prov}>
                     <Button>
                         {this.state.prov} <DownOutlined />
                     </Button>
@@ -81,12 +91,9 @@ render() {
                     onSearch={value => console.log(value)}
                 />
 
-                <Button className = "button1" href = "/Login">Login</Button>
-                <Button className = "button1" href = "/SignUp">Sign Up</Button>
-
-                <div>
-                <Button className = "user" type="link" href = "/Cart">Hello,User</Button>
-                </div >
+                { !this.props.isLogin ? <><Button className = "button1" href = "/Login">Login</Button>
+                <Button className = "button1" href = "/SignUp">Sign Up</Button></> : <Button className = "cart" type="link" href = "/Cart">User</Button>}
+                
 
                 <Button className = "cart" type="link" icon={<ShoppingCartOutlined/>} href = "/Cart">Cart</Button>
 
@@ -95,7 +102,7 @@ render() {
             <Menu className = 'nvbar' mode="horizontal" onClick={this.handleClick} selectedKeys={[this.state.current]} style={{ height : 60}}>
                 <SubMenu className='department' title="Department" key="main" icon={<AppstoreOutlined />}>
                     <Menu.ItemGroup title="Grocery & Household">
-                        <Menu.Item key="setting:1001" icon={<AppstoreOutlined />}>Meat & Seafood</Menu.Item>
+                        <Menu.Item key="setting:1001">Meat & Seafood</Menu.Item>
                         <Menu.Item key="setting:1002">Snack & Candy</Menu.Item>
                         <Menu.Item key="setting:1003">Vegan Food</Menu.Item>
                         <Menu.Item key="setting:1004">Water & Beverages</Menu.Item>
@@ -133,4 +140,11 @@ render() {
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogin: state.isLogin,
+    }
+}
+
+export default connect(mapStateToProps)(Navbar)
+//export default Navbar;

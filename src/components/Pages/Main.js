@@ -2,12 +2,12 @@ import React from 'react';
 import './Main.scss';
 import { Row, Col,Carousel, Card, Tag } from 'antd';
 import QueueAnim from 'rc-queue-anim'
-import img1 from "../img/img001.jpg";
-import img2 from "../img/img002.jpg";
-import img3 from "../img/img003.jpg";
-import img4 from "../img/img004.jpg";
-import img5 from "../img/img005.jpg";
-import imgHolder from "../img/unknow.png";
+import img1 from "../../img/img001.jpg";
+import img2 from "../../img/img002.jpg";
+import img3 from "../../img/img003.jpg";
+import img4 from "../../img/img004.jpg";
+import img5 from "../../img/img005.jpg";
+import imgHolder from "../../img/unknow.png";
 import axios from "axios"; 
 
 class Main extends React.Component {
