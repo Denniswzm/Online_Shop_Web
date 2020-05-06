@@ -29,7 +29,7 @@ export const loginUser = (username, password) => async (dispatch, getState) => {
     } else {
         dispatch({
             type: types.FETCH_USER.FETCH_USER_FAILURE,
-            payload: username
+            payload: null
         })
     }
 };
