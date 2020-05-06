@@ -4,6 +4,7 @@ import { Row, Col, Carousel, Card, Form, Input, Button, Checkbox, Breadcrumb, Ta
 import QueueAnim from 'rc-queue-anim'
 import {connect} from 'react-redux';
 import {loginUser} from '../../action/UserActions';
+import { Redirect } from 'react-router-dom';
 
 const { TabPane } = Tabs;
 
@@ -25,7 +26,13 @@ const tailLayout = {
 const Demo = (props) => {
 		const onFinish = values => {
 			console.log('Success:', values);
-			props.loginUser(values.username, values.password)
+			props.loginUser(values.username, values.password).then(() => {
+				console.log('finished: ');
+				console.log(props);
+				if (props.isLogin) {
+					props.history.push('/');
+				}
+			})
 		};
 	
 		const onFinishFailed = errorInfo => {
@@ -35,7 +42,11 @@ const Demo = (props) => {
 function callback(key) {
 			console.log(key);
 		}
-	
+		if (props.isLogin) {
+			return (
+				<Redirect to="/" />
+			)
+		}
 return (
 		<Tabs className ="Tab" defaultActiveKey="1" onChange={callback} type="card" tabBarGutter="10px">
 				<TabPane className ="Tabbox" tab="Login" key="1">
@@ -54,7 +65,6 @@ return (
 											name = "username"
 											rules = {[
 											{
-												required: true,
 												message: 'Please input your username!',
 											},
 										]}
@@ -66,7 +76,6 @@ return (
 											name="password"
 											rules={[
 											{
-												required: true,
 												message: 'Please input your password!',
 											},
 										]}
@@ -103,5 +112,11 @@ return (
 		</Tabs>
 		);
 	};
+	const mapStateToProps = (state) => {
+		console.log(state);
+		return {
+			isLogin: state.user.isLogin
+		}
+	}
 	const mapDispatch = {loginUser};
-	export default connect(null, mapDispatch)(Demo);
+	export default connect(mapStateToProps, mapDispatch)(Demo);

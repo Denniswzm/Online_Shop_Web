@@ -1,6 +1,7 @@
 import * as types from "../action/types" 
 
 const initState = {
+    isLogin: false,
     SIGN: null,
     error: null,
 }

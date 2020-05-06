@@ -1,7 +1,7 @@
 import React from "react";
 import './Navbar.scss'
 import logo from "../../img/Logo.png";
-import { Row, Col, Menu, Cascader, Input, Button, Dropdown } from "antd";
+import { Select, Menu, Cascader, Input, Button, Dropdown } from "antd";
 import { MailOutlined, AppstoreOutlined, SettingOutlined, SearchOutlined, AudioOutlined, DownOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import provinces from "../const/provinces";
@@ -11,6 +11,14 @@ const { SubMenu } = Menu;
 
 const { Search } = Input;
 
+const { Option } = Select;
+
+function handleChange(value) {
+
+    console.log(`selected ${value}`);
+
+}
+
 export class Navbar extends React.Component {
 
     state = {
@@ -18,12 +26,22 @@ export class Navbar extends React.Component {
         prov: "ON"
     };
 
+    // componentWillUpdate(prevProps,prevState){
+    //     this.setState({
+    //         current: prevState.current,
+    //         prov: prevState.prov,
+    //         isLogin: prevState.isLogin
+    //     })
+    // }
+
+
     handleClick = e => {
         console.log("click ", e);
         this.setState({
         current: e.key
         });
     };
+    
 
     // changeProv = e => {
     //     this.setState({
@@ -43,29 +61,6 @@ export class Navbar extends React.Component {
             { Object.keys(provinces).map((ele) => <Menu.Item key={ele}>{provinces[ele]}</Menu.Item>)}
         </Menu>
     )
-
-    // prov(){
-    //     let dom = provinces.map((ele,idx) => {
-    //         <Menu.Item key="idx">ele.val</Menu.Item>
-    //     })
-    // }
-
-    provinces = (
-        <Menu onClick={this.changeProv}>
-            <Menu.Item key="1">AB</Menu.Item>
-            <Menu.Item key="2">BC</Menu.Item>
-            <Menu.Item key="3">MB</Menu.Item>
-            <Menu.Item key="4">NB</Menu.Item>
-            <Menu.Item key="5">NL</Menu.Item>
-            <Menu.Item key="6">NT</Menu.Item>
-            <Menu.Item key="7">NS</Menu.Item>
-            <Menu.Item key="8">NU</Menu.Item>
-            <Menu.Item key="9">ON</Menu.Item>
-            <Menu.Item key="10">PE</Menu.Item>
-            <Menu.Item key="11">SK</Menu.Item>
-            <Menu.Item key="12">YT</Menu.Item>
-        </Menu>
-    );
 
 //username & button change
 
@@ -91,8 +86,12 @@ render() {
                     onSearch={value => console.log(value)}
                 />
 
-                { !this.props.isLogin ? <><Button className = "button1" href = "/Login">Login</Button>
-                <Button className = "button1" href = "/SignUp">Sign Up</Button></> : <Button className = "cart" type="link" href = "/Cart">User</Button>}
+                { !this.props.isLogin ? <>
+                <Button className = "button1" href = "/Login">Login</Button>
+                <Button className = "button1" href = "/SignUp">Sign Up</Button></> 
+                : 
+                <Button className = "LoginUserName" type="link" href = "/Cat">Hello,User</Button>               
+                }
                 
 
                 <Button className = "cart" type="link" icon={<ShoppingCartOutlined/>} href = "/Cart">Cart</Button>
@@ -142,7 +141,7 @@ render() {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLogin: state.isLogin,
+        isLogin: state.user.isLogin,
     }
 }
 

@@ -16,7 +16,7 @@ class Main extends React.Component {
         user: []
     };
 
-    componentWillMount() {
+componentWillMount() {
         axios.get("http://localhost:8080/api/product").then(r => {
             this.setState({
                 news: r.data
@@ -59,33 +59,33 @@ class Main extends React.Component {
                 
                 {this.state.news.map((ele, idx) => (
                     <Col span={6}>
-                    <Card
-                    style={{ width: "25em", height: "35em", marginTop:"4em", marginLeft:"1.5em"}}
-                    hoverable
-                    cover={
-                        <img
-                        alt="cover"
-                        src={
-                            ele.cover
-                            ? ele.cover
-                            : imgHolder
-                        }
-                        onError={e => {
-                            e.target.onError = null;
-                            e.target.src = imgHolder;
-                        }}
-                        style={{ maxwidth: 200, maxHeight:240 }}
+                        <Card
+                            style={{ width: "25em", height: "35em", marginTop:"4em", marginLeft:"1.5em"}}
+                            hoverable
+                            cover={
+                                <img
+                                alt="cover"
+                                src={
+                                    ele.cover
+                                    ? ele.cover
+                                    : imgHolder
+                                }
+                                onError={e => {
+                                    e.target.onError = null;
+                                    e.target.src = imgHolder;
+                                }}
+                                style={{ maxwidth: 200, maxHeight:240 }}
                         />
-                    }
+                        }
                     >
                     {console.log(ele)}
                     <Card.Meta
-                    title={ele.productName}
-                    description={
-                            <div>
-                                <p>{ele.price}</p>
-                            </div>
-                            }
+                        title={ele.productName}
+                        description={
+                                <div>
+                                    <p>{ele.price}</p>
+                                </div>
+                                }
                     />
                     </Card>
                     </Col>
