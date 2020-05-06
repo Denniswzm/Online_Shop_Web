@@ -91,7 +91,7 @@ render() {
                 <Button className = "button1" href = "/Login">Login</Button>
                 <Button className = "button1" href = "/SignUp">Sign Up</Button></> 
                 : 
-                <Button className = "LoginUserName" type="link" href = "/Cat">Hello,User</Button>               
+                <Button className = "LoginUserName" type="link" href = "/Cat">Hello, {this.props.SIGN}</Button>               
                 }
                 
 
@@ -180,6 +180,7 @@ render() {
 const mapStateToProps = (state, ownProps) => {
     return {
         isLogin: state.user.isLogin,
+        SIGN: state.user.SIGN
     }
 }
 
