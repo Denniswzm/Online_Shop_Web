@@ -14,33 +14,19 @@ const { Search } = Input;
 
 const { Option } = Select;
 
-
-
-function handleChange(value) {
-
-    console.log(`selected ${value}`);
-
-}
-
-function CartMenuClick(e) {
-    console.log('click', e);
-  }
-  
-
 export class Navbar extends React.Component {
-
-    // componentWillMount() {
-    //     axios.get("http://localhost:8080/api/user").then(r => {
-    //         this.setState({
-    //             user: r.data
-    //         });
-    //     });
-    // }
 
     state = {
         current: "main",
-        prov: "ON"
+        prov: "ON",
+        showCart: false
     };
+
+    prov = (
+        <Menu onClick={this.changeProv}>
+            { Object.keys(provinces).map((ele) => <Menu.Item key={ele}>{provinces[ele]}</Menu.Item>)}
+        </Menu>
+    )
 
 
     handleClick = e => {
@@ -57,11 +43,12 @@ export class Navbar extends React.Component {
         });
     }
 
-    prov = (
-        <Menu onClick={this.changeProv}>
-            { Object.keys(provinces).map((ele) => <Menu.Item key={ele}>{provinces[ele]}</Menu.Item>)}
-        </Menu>
-    )
+
+    toggleCart = e => {
+        this.setState({
+            showCart: !this.state.showCart
+        })
+    }
 
 //username & button change
 
@@ -91,11 +78,13 @@ render() {
                 <Button className = "button1" href = "/Login">Login</Button>
                 <Button className = "button1" href = "/SignUp">Sign Up</Button></> 
                 : 
-                <Button className = "LoginUserName" type="link" href = "/Cat">Hello, {this.props.SIGN}</Button>               
+                <Button className = "LoginUserName" type="link" href = "/Cart">Hello, {this.props.SIGN}</Button>               
                 }
                 
 
-                <Button className = "cart" type="link" icon={<ShoppingCartOutlined/>} href = "/Cart">Cart <DownOutlined /></Button>
+                <Button className = "cart" type="link" icon={<ShoppingCartOutlined/>} onClick={this.toggleCart}>Cart</Button>
+
+                <Button className = "dropdown" type="link" icon={<DownOutlined/>} onClick={this.toggleCart}></Button>
 
             </div>
 
@@ -137,40 +126,47 @@ render() {
             </Menu>
         
 
-            <div className = "shopping-cart">
-                <Card>
+            <Card className = "shopping-cart" style={{display: this.state.showCart ? "block" : "none"}}>
+                
                     <div class="shopping-cart-header">
-                        <div class="shopping-cart-total">
-                            <span class="lighter-text">Total:</span>
-                            <span class="main-color-text">$2,229.97</span>
-                        </div>
+                        <Button className="title" icon={<ShoppingCartOutlined/>} type="link" href = "/Cart">Shopping Cart</Button>  
                     </div>
 
                     <ul class="shopping-cart-items">
-                        <li class="clearfix">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
-                            <span class="item-name">Sony DSC-RX100M III</span>
-                            <span class="item-price">$849.99</span>
-                            <span class="item-quantity">Quantity: 01</span>
+                        <li class="items">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" />
+                            <span className="item-name">Sony DSC-RX100M III</span>
+                            <span className="item-price">$849.99</span>
+                            <span className="item-quantity">Quantity: 01</span>
                         </li>
 
-                        <li class="clearfix">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
-                            <span class="item-name">KS Automatic Mechanic...</span>
-                            <span class="item-price">$1,249.99</span>
-                            <span class="item-quantity">Quantity: 01</span>
+                        <li className="items">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" />
+                            <span className="item-name">KS Automatic Mechanic...</span>
+                            <span className="item-price">$1,249.99</span>
+                            <span className="item-quantity">Quantity: 01</span>
                         </li>
 
-                        <li class="clearfix">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
-                            <span class="item-name">Kindle, 6" Glare-Free To...</span>
-                            <span class="item-price">$129.99</span>
-                            <span class="item-quantity">Quantity: 01</span>
+                        <li className="items">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg"/>
+                            <span className="item-name">Kindle, 6" Glare-Free To...</span>
+                            <span className="item-price">$129.99</span>
+                            <span className="item-quantity">Quantity: 01</span>
                         </li>
                     </ul>
 
-                </Card>
-            </div>
+                    <div class="shopping-cart-total">
+                    <span className="lighter-text">Total:</span>
+                    <span className="main-color-text">$2,229.97</span>
+                    </div>
+
+                    <Button className="details" href = "/Cart">Cart Detials</Button>
+                    
+                    <Button className="checkout" type="primary">Checkout</Button>
+
+                   
+
+            </Card>
 
         </div>
     );

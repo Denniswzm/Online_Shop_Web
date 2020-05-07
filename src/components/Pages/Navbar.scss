@@ -35,6 +35,10 @@
     font-weight: bold;
 }
 
+.dropdown{
+    margin-left: -1em;
+}
+
 .button1{
     width: 8em;
     margin-left: 1.5em;
@@ -93,62 +97,91 @@
 
 // cart
 
+.title{
+    margin-left: -12em;
+    font-size: larger;
+    font-weight: bold;
+}
+
 .shopping-cart {
-    margin: 20px 0;
-    float: right;
-    background: white;
-    width: 320px;
-    position: relative;
-    border-radius: 3px;
-    padding: 20px;
+    margin: 0 auto;
+    background: rgb(199, 199, 199);
+    width: 30em;
+    height: 40em;
+    position: absolute;
+    left: 90em;
+    margin-top: -3em;
+    border-radius: 10px;
+    z-index: 100;
+
+}
     
     
-    .shopping-cart-header {
-      border-bottom: 1px solid #E8E8E8;
-      padding-bottom: 15px;
+.shopping-cart-header {
+    border-bottom: 3px solid #E8E8E8;
+    margin-bottom: -1em;
+
+}
       
-      .shopping-cart-total {
-        float: right;
-      }
-    }
+.shopping-cart-total {
+    border-top: 3px solid #E8E8E8;
+    margin-top: 3em;
+    margin-left: 10em;
+    font-size: larger;    
+}
     
-    .shopping-cart-items {
-      
-      padding-top: 20px;
+.shopping-cart-items {
+
+        .items{
+           margin-top: 3em;
+           margin-bottom: 1em;
+        }
   
         li {
           margin-bottom: 18px;
         }
   
-      img {
-        float: left;
-        margin-right: 12px;
-      }
+        img {
+            float: left;
+            margin-right: 12px;
+        }
       
-      .item-name {
-        display: block;
-        padding-top: 10px;
-        font-size: 16px;
-      }
+        .item-name {
+            display: block;
+            font-size: 16px;
+        }
       
-      .item-price {
-        margin-right: 8px;
-      }
+        .item-price {
+            margin-right: 8px;
+        }
+
+        
     
-    }
-     
-  }
+}
   
-  .shopping-cart:after {
-      bottom: 100%;
-      left: 89%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-bottom-color: white;
-      border-width: 8px;
-      margin-left: -8px;
-  }
+.shopping-cart:after {
+    bottom: 100%;
+    left: 89%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: white;
+    border-width: 8px;
+    margin-left: -8px;
+}
+
+.details{
+    margin: 0 auto;
+    margin-top: 2em;
+    width: 20em;
+
+}
+
+.checkout{
+    margin: 0 auto;
+    margin-top: 1em;
+    width: 20em;
+}

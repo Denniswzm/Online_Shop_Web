@@ -1,6 +1,6 @@
 import React from 'react';
 import './Main.scss';
-import { Row, Col,Carousel, Card, Tag } from 'antd';
+import { Row, Col,Carousel, Card, Tag,Button } from 'antd';
 import QueueAnim from 'rc-queue-anim'
 import img1 from "../../img/img001.jpg";
 import img2 from "../../img/img002.jpg";
@@ -8,6 +8,7 @@ import img3 from "../../img/img003.jpg";
 import img4 from "../../img/img004.jpg";
 import img5 from "../../img/img005.jpg";
 import imgHolder from "../../img/unknow.png";
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import axios from "axios"; 
 
 class Main extends React.Component {
@@ -32,7 +33,9 @@ componentWillMount() {
     render(){
         return(
             <QueueAnim delay={1000} className = "queue-simple">
+
             <div className="Collapse1">
+
                 <Carousel autoplay>
                     <div>
                         <img className="img" src={img1} />
@@ -50,6 +53,7 @@ componentWillMount() {
                         <img className="img" src={img5} />
                     </div>
                 </Carousel>
+                
             </div>
 
             <Tag color="#2db7f5">WeeklySpecial</Tag>
