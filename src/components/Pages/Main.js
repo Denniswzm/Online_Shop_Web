@@ -63,7 +63,7 @@ componentWillMount() {
 
             <div className = "weeklyshowbar">
                 <Card className = "weeklyshowbarcon">
-                <Row justify="space-around" gutter={[6, 6]}>
+                <Row justify="space-around" gutter={[1, 1]}>
                         {this.state.news.map((ele, idx) => (
                             <Col span={3}>
                                 <Card
