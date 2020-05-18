@@ -175,7 +175,7 @@ render() {
 
             </Card> */}
             <div>
-                <NavCartPreview showCart={this.state.showCart}/>
+                <NavCartPreview showCart={this.state.show}/>
             </div>
 
         </div>

@@ -1,6 +1,10 @@
+#main-navbar .ant-row{
+   display:inline-block;
+}
+
 .MainCollapsel{
     margin:0 auto;
-    margin-top: 0.75em;
+    margin-top: 2em;
     margin-bottom: 2em;
 }
 
@@ -27,8 +31,6 @@
     position: absolute;
     font-size: larger;
     bottom: -1em;
-    
-    
 }
 
 .add{
@@ -48,7 +50,7 @@
 
 //weeklyspecial
 .weeklyspecialtag{
-    width: 60em;
+    width: 65em;
     height: 5em;
     background-color:#2db7f5;
 }
@@ -65,11 +67,25 @@
 
 .weeklydate{
     color: white;
-    margin-top: 0.3em;
-    font-weight: bold;
+    float: left;
+    margin-left: 3em;
+    // margin-top: 0.3em;
+    // margin-left: -3em;
+    // font-weight: bold;
 }
 
-.weeklyshowbar{
+.more{
+    color: rgb(0, 0, 0);
+    float: right;
+    // margin-top: 0.3em;
+    font-weight: bold;
+    margin-left: 2em;
+    margin-top: 0.25em;
+    // margin-left: -30em;
+    // margin-top: -10em;
+}
+
+.weeklybar{
     margin-top: 2em;
     // margin-left: 3em;
     // margin-right: 3em;
@@ -121,10 +137,20 @@
     color: white;
 }
 
+.NewarrivalsContainer{
+    // width: 90%;
+    // height: 20em;
+    // height: 20em;
+    margin: 0 auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
 .NewarrivalsBar{
-    font-family:Arial;
-    height: 15em;
     
+    margin: 0 auto;
+    width: 90%;
+    height: 25em;
     // margin:0 auto;
     background-color: rgb(129, 129, 129);
 }
@@ -133,28 +159,63 @@
     // margin-left: 1em;
     // margin-right: 1em;
     // margin-top: 1em;
+    font-family:Arial;
     margin: 0 auto;
     width: 70%;
-    position: relative;
+    height: 24em;
+    // position: relative;
     top: 1em;
-    bottom: 1em;
+    bottom: 1em; 
+    padding: 0;
+}
+
+.NewarrivalsPrice{
+    // position: absolute;
+    // font-weight: bold;
+    // font-size: 1em;
+    // margin: 0 auto;
+    // margin-bottom: 0.5em;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    font-size: larger;
+    bottom: 0.5em;
+    
+    
 }
 
 .slick-prev:before, .slick-next:before{
     color: black;
 }
 
-.NewarrivalsContainer{
-    width: 90%;
-    // height: 20em;
+// .foodguide{
+//     width: 100%;
+// }
+.MostPurchasedFoodContainer{
     margin: 0 auto;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
-.foodguide{
-    width: 100%;
+.FoodBar{
+    width: 90%;
+    margin: 0 auto;
 }
+
+.foodP{
+    // position: absolute;
+    // font-weight: bold;
+    // font-size: 1em;
+    // margin: 0 auto;
+    // margin-bottom: 0.5em;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    font-size: larger;
+    left: 4em;
+    bottom: -1em;
+}
+
 
 //GuessYouWant
 .GYWtag{

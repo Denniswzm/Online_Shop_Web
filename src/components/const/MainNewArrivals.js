@@ -32,7 +32,7 @@ class MainNewArrivals extends React.Component {
                 {this.state.product.map((ele, idx) => (
                     <div>
                         <Card
-                            className = "weeklypics"
+                            className = "NewarrivalsPics"
                             cover={
                             <img alt="cover"
                             src={ ele.cover ? ele.cover : imgHolder}
@@ -44,9 +44,9 @@ class MainNewArrivals extends React.Component {
                             }
                         >
                         {console.log(ele)}
-                        <Card.Meta className = "weeklydes"/>
+                        <Card.Meta/>
                             <a className = "productN">{ele.productName}</a>
-                            <p className = "productP">${ele.price}</p>
+                            <p className = "NewarrivalsPrice">${ele.price}</p>
                             <Button className="add" type="primary" shape="circle" icon={<PlusOutlined/>} />
                         </Card>
                     </div>

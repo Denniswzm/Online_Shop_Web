@@ -33,7 +33,7 @@ class MainWeeklySpecial extends React.Component {
        
 
     return (
-        <div className = "weeklyshowbar">
+        <div>
                 <Card className = "weeklyshowbarcon">
                 <Row justify="space-around" gutter={[1, 1]}>
                         {this.state.product.map((ele, idx) => (

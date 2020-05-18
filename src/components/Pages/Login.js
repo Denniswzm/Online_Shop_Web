@@ -57,6 +57,7 @@ return (
 										initialValues={{
 											remember: true,
 										}}
+										id="login-form"
 										onFinish={onFinish}
 										onFinishFailed={onFinishFailed}
 									>
